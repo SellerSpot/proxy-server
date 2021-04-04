@@ -1,0 +1,28 @@
+{
+  "name": "proxy-server",
+  "version": "1.0.0",
+  "description": "proxy server for all services used for client development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SellerSpot/proxy-server.git"
+  },
+  "keywords": [
+    "proxy-server",
+    "proxy"
+  ],
+  "author": "Immanuel Irwin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SellerSpot/proxy-server/issues"
+  },
+  "homepage": "https://github.com/SellerSpot/proxy-server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.1",
+    "http-proxy-middleware": "^1.1.0"
+  }
+}
