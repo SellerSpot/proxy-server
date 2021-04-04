@@ -22,7 +22,6 @@
   "homepage": "https://github.com/SellerSpot/proxy-server#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "http-proxy": "^1.18.1",
     "http-proxy-middleware": "^1.1.0"
   }
 }
