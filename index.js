@@ -16,7 +16,7 @@ const SERVICE_VS_PORT = {
   ecom: 6004,
 };
 
-//Auth Service
+//proxy Services
 Object.keys(SERVICE_VS_PORT).forEach((service) => {
   app.use(
     `/${service}`,
