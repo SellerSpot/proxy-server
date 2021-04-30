@@ -1,9 +1,12 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
+const morgan = require("morgan");
 
 const SERVER_PROXY_PORT = 6005;
 
 const app = express();
+
+app.use(morgan("dev"));
 
 const SERVICE_VS_PORT = {
   auth: 6000,
