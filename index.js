@@ -1,7 +1,10 @@
 const express = require('express');
+const path = require('path');
+const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
+app.use(cors());
 
 const SERVICE_VS_PORT = {};
 SERVICE_VS_PORT['auth'] = 6000;
@@ -9,6 +12,8 @@ SERVICE_VS_PORT['core'] = 6001;
 SERVICE_VS_PORT['catalogue'] = 6002;
 SERVICE_VS_PORT['pos'] = 6003;
 SERVICE_VS_PORT['ecom'] = 6004;
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Auth Service
 app.use(
