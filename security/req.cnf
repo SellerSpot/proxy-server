@@ -1,0 +1,19 @@
+[req]
+distinguished_name = sellerspot_cert
+x509_extensions = v3_req
+prompt = no
+[sellerspot_cert]
+C = IN
+ST = TN
+L = TRY
+O = Sellerspot
+OU = Sellerspot
+CN = sellerspot.in
+emailAddress=someone@somewhere.org
+[v3_req]
+keyUsage = critical, digitalSignature, keyAgreement
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = www.sellerspot.in
+DNS.2 = *.sellerspot.in
