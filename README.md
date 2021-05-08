@@ -2,7 +2,7 @@
 
 Node server will act as proxy server for other backend services
 
-## Instrction to install cert and run proxy server
+## Instrction to install cert
 
 1. Install `mkcert`, there are instructions for macOS/Windows/Linux (https://github.com/FiloSottile/mkcert).
 
