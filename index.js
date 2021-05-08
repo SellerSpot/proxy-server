@@ -11,8 +11,8 @@ const fs = require("fs");
  */
 
 const options = {
-  key: fs.readFileSync("/home/thayalangr/localhost+4-key.pem"),
-  cert: fs.readFileSync("/home/thayalangr/localhost+4.pem"),
+  key: fs.readFileSync("./security/_wildcard.sellerspot.in+5-key.pem"),
+  cert: fs.readFileSync("./security/_wildcard.sellerspot.in+5.pem"),
 };
 
 const SERVER_PROXY_PORT = 4505;
