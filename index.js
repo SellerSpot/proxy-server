@@ -16,7 +16,7 @@ const options = {
 };
 
 const SERVER_PROXY_PORT = 4505;
-const SERVER_PROXY_PORT_HTTPS = 4506;
+const SERVER_PROXY_PORT_HTTPS = 443;
 
 const app = express();
 
