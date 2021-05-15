@@ -1,9 +1,9 @@
-const express = require("express");
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const morgan = require("morgan");
-const cors = require("cors");
-const https = require("https");
-const fs = require("fs");
+const express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const morgan = require('morgan');
+const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
 
 /**
  * Below SSL certificats should be generated with a wildcard domain `*.sellerspot.in`
@@ -11,12 +11,12 @@ const fs = require("fs");
  */
 
 const options = {
-  key: fs.readFileSync("./security/_wildcard.sellerspot.in+5-key.pem"),
-  cert: fs.readFileSync("./security/_wildcard.sellerspot.in+5.pem"),
+  key: fs.readFileSync('./security/_wildcard.sellerspot.in-key.pem'),
+  cert: fs.readFileSync('./security/_wildcard.sellerspot.in.pem'),
 };
 
 const SERVER_PROXY_PORT = 4505;
-const SERVER_PROXY_PORT_HTTPS = 443;
+const SERVER_PROXY_PORT_HTTPS = 4506;
 
 const app = express();
 
@@ -24,10 +24,10 @@ app.use(
   cors({
     credentials: true,
     origin: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   })
 );
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 const SERVICE_VS_PORT = {
   auth: 4500,
@@ -37,7 +37,7 @@ const SERVICE_VS_PORT = {
   ecom: 4504,
 };
 
-app.use("/", express.static("./public"));
+app.use('/', express.static('./public'));
 
 //proxy Services
 Object.keys(SERVICE_VS_PORT).forEach((service) => {
@@ -47,7 +47,7 @@ Object.keys(SERVICE_VS_PORT).forEach((service) => {
       target: `http://localhost:${SERVICE_VS_PORT[service]}`,
       changeOrigin: false,
       pathRewrite: {
-        [`^/${service}`]: "/", // rewrite path
+        [`^/${service}`]: '/', // rewrite path
       },
     })
   );
