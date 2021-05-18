@@ -11,8 +11,8 @@ const fs = require('fs');
  */
 
 const options = {
-  key: fs.readFileSync('./security/_wildcard.sellerspot.in-key.pem'),
-  cert: fs.readFileSync('./security/_wildcard.sellerspot.in.pem'),
+  key: fs.readFileSync('./security/_wildcard.sellerspot.in+5-key.pem'),
+  cert: fs.readFileSync('./security/_wildcard.sellerspot.in+5.pem'),
 };
 
 const SERVER_PROXY_PORT = 4505;
@@ -53,7 +53,7 @@ Object.keys(SERVICE_VS_PORT).forEach((service) => {
   );
 });
 
-app.listen(SERVER_PROXY_PORT, () =>
+const server = app.listen(SERVER_PROXY_PORT, () =>
   console.log(`Proxy server HTTP started on port ${SERVER_PROXY_PORT}`)
 );
 
@@ -62,3 +62,25 @@ https
   .listen(SERVER_PROXY_PORT_HTTPS, () =>
     console.log(`Proxy server HTTPS started on port ${SERVER_PROXY_PORT_HTTPS}`)
   );
+function shutDown(server) {
+  console.log('Received kill signal, shutting down gracefully...');
+
+  server.close(() => {
+    console.log('Server closed gracefully');
+    process.exit(0);
+  });
+
+  setTimeout(() => {
+    console.error('Could not gracefully shutdown, forcefully shutting down...');
+    process.exit(1);
+  }, 10000);
+}
+
+const applyGracefullShutDownHandler = (server) => {
+  console.log('Gracefull shutdown handler applied');
+  const shutDownHanlder = () => shutDown(server);
+  process.on('SIGTERM', shutDownHanlder);
+  process.on('SIGINT', shutDownHanlder);
+};
+
+applyGracefullShutDownHandler(server);
