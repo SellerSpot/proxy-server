@@ -4,7 +4,8 @@
   "description": "proxy server for all services used for client development",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "npm run kill-port  && nodemon src",
+    "kill-port": "kill-port 4505 4506"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.1.0"
+    "http-proxy-middleware": "^1.1.0",
+    "kill-port": "^1.6.1"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
